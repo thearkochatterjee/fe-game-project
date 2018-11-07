@@ -2,9 +2,9 @@ function [kind] = fourofkind(hand)
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 largestnummatch = 0;
-for x=1:1:6
+for x=1:1:5
     count = 1;
-    for y=2:1:6
+    for y=x:1:5
         if hand(y) == hand(x)
             count = count + 1;
         end
@@ -13,7 +13,6 @@ for x=1:1:6
        largestnummatch=count; 
     end
 end
-largestnummatch
 if largestnummatch == 4
     kind = true;
 else
