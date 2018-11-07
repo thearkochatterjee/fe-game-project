@@ -5,7 +5,7 @@ ai=input('Would you like to include the computer in this game (y - yes, n - no)'
 if ai=='y'
     fprintf('with computer')
 else
-    dice_results=randi([1,6],1,5)
+    dice_results=randi([1,6],1,6)
     more = 'y';
     i=1;
     keep=[];
@@ -15,8 +15,5 @@ else
         more = input('Are there any other dice that you would like to keep?','s');
     end
     keep
-    for i = length(keep):1:5
-       keep(i)=randi([1,6]);
-    end
-    keep
+    for
 end
