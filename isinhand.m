@@ -1,6 +1,7 @@
 function [contains] = isinhand(hand,value)
-%UNTITLED9 Summary of this function goes here
-%   Detailed explanation goes here
+%isinhand - detects if a specific value is in the array hand
+
+
 con = false;
 for i = 1:1:length(hand)
     if hand(i) == value
