@@ -1,5 +1,6 @@
 clear;
 clc;
+% Game based on rolling 5 dice and trying to achieve the highest score
 
 % Asks how many players are playing
 numplayers = input('How many players are present?');
@@ -33,8 +34,12 @@ for x = 1:1:13
         fprintf('11 - Fullhouse\n');
         fprintf('12 - Yahtzee\n');
         fprintf('13 - Chance\n');
+        
+        % Loops until avaliable category has been selected
         while 1
             category=input('What category do you want these points to count for?\n');
+            
+            % Checks to make sure that the category has not been used
             if isinhand(category) == false
                 categoriesused(p,category) = category;
                 break;
@@ -92,6 +97,19 @@ for x = 1:1:13
                 roundscore = roundscore + result(i);
             end
         end
+        score(p) = roundscore;
     end
 end
+
+% Finding out which player has the highest score
+highscore = 0;
+poshigh = 0;
+for p = 1:1:length(score)
+    if score(p) > highscore
+        highscore = score(p);
+        poshigh = p;
+    end
 end
+
+%Declare winner of the game
+fprintf('The winner is player %.0f with a score of %.0f!\n', poshigh, highscore);
