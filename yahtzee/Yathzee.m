@@ -1,23 +1,97 @@
 clear;
 clc;
+
+% Asks how many players are playing
 numplayers = input('How many players are present?');
-ai=input('Would you like to include the computer in this game (y - yes, n - no)','s');
-if ai=='y'
-    fprintf('with computer')
-else
-    
-%     dice_results=randi([1,6],1,5)
-%     more = 'y';
-%     i=1;
-%     keep=[];
-%     while more=='y'
-%         keep(i) = dice_results(input('What number dice would you like to keep?'));
-%         i=i+1;
-%         more = input('Are there any other dice that you would like to keep?','s');
-%     end
-%     keep
-%     for i = length(keep):1:5
-%        keep(i)=randi([1,6]);
-%     end
-%     keep
+
+% Intialize scores for all the players
+for p = 1:1:numplayers
+    score(p) = 0;
+    for x = 1:1:13
+        categoriesused(p,x) = 0;
+    end
+end
+
+for x = 1:1:13
+    for p = 1:1:numplayers
+        % Declares who's turn it is to play and proforms their turn
+        fprintf('It is player %.0f turn!\n',p);
+        result = turn();
+        
+        % Asks play what category to place the score into
+        clc;
+        fprintf('1 - Aces\n');
+        fprintf('2 - Twoes\n');
+        fprintf('3 - Threes\n');
+        fprintf('4 - Fours\n');
+        fprintf('5 - Fives\n');
+        fprintf('6 - Sixes\n');
+        fprintf('7 - Three of a kind\n');
+        fprintf('8 - Four of a kind\n');
+        fprintf('9 - Small Straight\n');
+        fprintf('10 - Large Straight\n');
+        fprintf('11 - Fullhouse\n');
+        fprintf('12 - Yahtzee\n');
+        fprintf('13 - Chance\n');
+        while 1
+            category=input('What category do you want these points to count for?\n');
+            if isinhand(category) == false
+                categoriesused(p,category) = category;
+                break;
+            else
+                fprintf('You have already used this category!\n');
+            end
+        end
+        
+        % Intialize the score for the round
+        roundscore = 0;
+        
+        % Calculates the score for the intended category
+        if category == 1
+            roundscore = uppertotal(result,1);
+        elseif category == 2
+            roundscore = uppertotal(result,2);
+        elseif category == 3
+            roundscore = uppertotal(result,3);
+        elseif category == 4
+            roundscore = uppertotal(result,4);
+        elseif category == 5
+            roundscore = uppertotal(result,5);
+        elseif category == 6
+            roundscore = uppertotal(result,6);
+        elseif category == 7
+            if threeofkind(result) == true
+                for i = 1:1:length(result)
+                    roundscore = roundscore + result(i);
+                end
+            end
+        elseif category == 8
+            if fourofkind(result) == true
+                for i = 1:1:length(result)
+                    roundscore = roundscore + result(i);
+                end
+            end
+        elseif category == 9
+            if smallstraight(result) == true
+                roundscore = 30;
+            end
+        elseif category == 10
+            if largestraight(result) == true
+                roundscore = 40;
+            end
+        elseif category == 11
+            if fullhouse(result) == true
+                roundscore = 25;
+            end
+        elseif category == 12
+            if yahtzeedetection(result) == true
+                roundscore = roundscore + 50;
+            end
+        elseif category == 13
+            for i = 1:1:length(result)
+                roundscore = roundscore + result(i);
+            end
+        end
+    end
+end
 end
