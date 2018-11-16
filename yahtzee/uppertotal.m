@@ -3,7 +3,7 @@ function [total] = uppertotal(hand,value)
 % scoring sheet
 roundscore = 0;
 for i=1:1:length(hand)
-    if dice_results(i) == value
+    if hand(i) == value
         roundscore = roundscore + value;
     end
 end
