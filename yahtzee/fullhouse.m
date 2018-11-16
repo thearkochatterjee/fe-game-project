@@ -6,7 +6,7 @@ function [fullhouse] = fullhouse(hand)
 count = 0;
 % Testing if there is a three of a kind but not a four of a kind so it is
 % possible for a pair to be present
-if threeofkind(hand) == true && fourofkind == false
+if threeofkind(hand) == true && fourofkind(hand) == false
     % Loops through all elements of hand array
     for i = 1:1:length(hand)
         % Test if value tested is present in the hand and counts the
