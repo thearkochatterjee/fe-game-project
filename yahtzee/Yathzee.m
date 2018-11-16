@@ -12,7 +12,8 @@ for p = 1:1:numplayers
         categoriesused(p,x) = 0;
     end
 end
-
+% Intialize the score for the round
+        roundscore = 0;
 for x = 1:1:13
     for p = 1:1:numplayers
         % Declares who's turn it is to play and proforms their turn
@@ -34,13 +35,14 @@ for x = 1:1:13
         fprintf('11 - Fullhouse\n');
         fprintf('12 - Yahtzee\n');
         fprintf('13 - Chance\n');
+        fprintf('Score so far is %.0f\n',score(p));
         
         % Loops until avaliable category has been selected
         while 1
             category=input('What category do you want these points to count for?\n');
             
             % Checks to make sure that the category has not been used
-            if isinhand(category) == false
+            if isinhand(categoriesused, category) == false
                 categoriesused(p,category) = category;
                 break;
             else
@@ -48,8 +50,7 @@ for x = 1:1:13
             end
         end
         
-        % Intialize the score for the round
-        roundscore = 0;
+        
         
         % Calculates the score for the intended category
         if category == 1
