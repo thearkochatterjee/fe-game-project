@@ -3,7 +3,10 @@ function [result, category] = ai(usedcategory)
 %   Detailed explanation goes here
 c = 1;
 while 1
+    % Creating random dice roll results
     hand = randi([1 6], [1 5]);
+    
+    % Testing if the computer could claim different categories for scoring
     if yahtzee(hand) == true
         category = 12;
         result = hand;
@@ -29,7 +32,10 @@ while 1
         result = hand;
         break;
     else
+        % If there are no other options computer see what would be the best
+        % category to pick with the options avalible if out of rolls
         if c == 3
+            % Creating array of possible scores to select from
             scorechoices(1) = 0;
             for i = 1:1:length(hand)
                 scorechoices(1) = scorechoices(1) + hand(i);
@@ -37,6 +43,9 @@ while 1
             for x = 2:1:7
                 scorechoices(x) = uppertotal(hand,x);
             end
+            
+            % Determining highest possible score from options present and
+            % returning the category value for what to be scored in
             highscore = 0;
             poshigh = 0;
             for p = 1:1:length(scorechoices)
