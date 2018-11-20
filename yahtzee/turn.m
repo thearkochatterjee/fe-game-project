@@ -9,13 +9,14 @@ load('Dice.mat');
 
 % Intial roll results
 dice_results = randi([1,6],1,5);
+figure('WindowStyle','docked');
 imshow([Dice{dice_results}]);
 
 % Loop until the player does not want to roll again
 while rollagain=='y' && rollcount < 4
 
     % Ask if the player wants to roll again
-    rollagain=input('Do you want to roll again?\n','s');
+    rollagain=input('Do you want to roll again?(y/n)\n','s');
     if rollagain=='y'
         rollcount = rollcount + 1;
         
