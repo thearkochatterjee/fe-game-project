@@ -24,7 +24,7 @@ while rollagain=='y' && rollcount < 4
         % to get rid of and sets them to blanks
         keep = dice_results;
         while 1
-            ridof = input('Which dice do you want to roll again? (enter 0 to exit)\n');
+            ridof = input('Which dice do you want to roll again? (type in the dice position that you want to select going from 1 to 5, enter 0 to exit)\n');
             if ridof == 0
                 break;
             elseif ridof == 1 || ridof == 2 || ridof == 3 || ridof == 4 || ridof == 5
@@ -45,6 +45,7 @@ while rollagain=='y' && rollcount < 4
         % Sets the results to the keep array and displays output
         dice_results=keep;
         close all;
+        figure('WindowStyle','docked');
         imshow([Dice{dice_results}]);
     end
 end
