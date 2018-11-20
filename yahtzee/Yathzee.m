@@ -1,5 +1,6 @@
 clear;
 clc;
+warning('off');
 % Game based on rolling 5 dice and trying to achieve the highest score
 
 % Asks how many players are playing
