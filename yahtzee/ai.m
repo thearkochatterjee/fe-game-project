@@ -8,28 +8,22 @@ while 1
     
     % Testing if the computer could claim different categories for scoring
     if yahtzee(hand) == true
-        category = 12;
-        result = hand;
+        cat = 12;
         break;
     elseif fullhouse(hand) == true
-        category = 11;
-        result = hand;
+        cat = 11;
         break;
     elseif largestraight(hand) == true
-        category = 10;
-        result = hand;
+        cat = 10;
         break;
     elseif smallstraight(hand) == true
-        category = 9;
-        result = hand;
+        cat = 9;
         break;
     elseif fourofkind(hand) == true
-        category = 8;
-        result = hand;
+        cat = 8;
         break;
     elseif threeofkind(hand) == true
-        category = 7;
-        result = hand;
+        cat = 7;
         break;
     else
         % If there are no other options computer see what would be the best
@@ -58,11 +52,13 @@ while 1
             if poshigh == 0
                 poshigh = 13;
             end
-            category = poshigh;
+            cat = poshigh;
             break;
         end
     end
     c=c+1;
 end
+result = hand;
+category = cat;
 end
 
