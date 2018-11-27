@@ -5,13 +5,6 @@ warning('off');
 
 % Asks how many players are playing
 numplayers = input('How many players are present?');
-% haveai = input('Do you want to include ai in the game?','s');
-% 
-% if haveai == 'y'
-%     ai = 1;
-% else
-%     ai = 0;
-% end
 
 % Intialize scores for all the players
 for p = 1:1:numplayers %+ ai
@@ -20,49 +13,45 @@ for p = 1:1:numplayers %+ ai
         categoriesused(p,x) = 0;
     end
 end
-% Intialize the score for the round
-roundscore = 0;
+
 for x = 1:1:13
-    for p = 1:1:numplayers %+ ai
-%         if p > numplayers
-%             [result,category] = ai(categoriesused);
-%         else
-            % Declares who's turn it is to play and proforms their turn
-            fprintf('It is player %.0f turn!\n',p);
-            result = turn();
-            
-            % Asks play what category to place the score into
-            clc;
-            fprintf('1 - Aces\n');
-            fprintf('2 - Twoes\n');
-            fprintf('3 - Threes\n');
-            fprintf('4 - Fours\n');
-            fprintf('5 - Fives\n');
-            fprintf('6 - Sixes\n');
-            fprintf('7 - Three of a kind\n');
-            fprintf('8 - Four of a kind\n');
-            fprintf('9 - Small Straight\n');
-            fprintf('10 - Large Straight\n');
-            fprintf('11 - Fullhouse\n');
-            fprintf('12 - Yahtzee\n');
-            fprintf('13 - Chance\n');
-            fprintf('Score so far is %.0f\n',score(p));
-            
-            % Loops until avaliable category has been selected
-            while 1
-                category=input('What category do you want these points to count for?\n');
-                
-                % Checks to make sure that the category has not been used
-                if isinhand(categoriesused, category) == false
-                    categoriesused(p,category) = category;
-                    break;
-                else
-                    fprintf('You have already used this category!\n');
-                end
-            end
-            
-        %end
+    for p = 1:1:numplayers
+        % Declares who's turn it is to play and proforms their turn
+        fprintf('It is player %.0f turn!\n',p);
+        result = turn();
         
+        % Asks play what category to place the score into
+        clc;
+        fprintf('1 - Aces\n');
+        fprintf('2 - Twoes\n');
+        fprintf('3 - Threes\n');
+        fprintf('4 - Fours\n');
+        fprintf('5 - Fives\n');
+        fprintf('6 - Sixes\n');
+        fprintf('7 - Three of a kind\n');
+        fprintf('8 - Four of a kind\n');
+        fprintf('9 - Small Straight\n');
+        fprintf('10 - Large Straight\n');
+        fprintf('11 - Fullhouse\n');
+        fprintf('12 - Yahtzee\n');
+        fprintf('13 - Chance\n');
+        fprintf('Your score so far is %.0f\n',score(p));
+        
+        % Loops until avaliable category has been selected
+        while 1
+            category=input('What category do you want these points to count for?\n');
+            
+            % Checks to make sure that the category has not been used
+            if isinhand(categoriesused, category) == false
+                categoriesused(p,category) = category;
+                break;
+            else
+                fprintf('You have already used this category!\n');
+            end
+        end
+        
+        % Intialize the score for the round
+        roundscore = 0;
         % Calculates the score for the intended category
         if category == 1
             roundscore = uppertotal(result,1);
@@ -109,7 +98,8 @@ for x = 1:1:13
                 roundscore = roundscore + result(i);
             end
         end
-        score(p) = roundscore;
+        score(p) = score(p) + roundscore;
+        fprintf('Your score is %.0f\n',score(p));
     end
 end
 
@@ -124,8 +114,4 @@ for p = 1:1:length(score)
 end
 
 %Declare winner of the game
-% if poshigh>numplayer
-%     fprintf('The winner is the ai with a score of %.0f!\n',highscore);
-% else
-    fprintf('The winner is player %.0f with a score of %.0f!\n', poshigh, highscore);
-% end
+fprintf('The winner is player %.0f with a score of %.0f!\n', poshigh, highscore);
