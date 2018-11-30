@@ -1,4 +1,3 @@
-
 clear;
 clc;
 warning('off');
@@ -19,7 +18,7 @@ fprintf('Large Straight - if all five dice are consecutive then 40 points will\n
 fprintf('Fullhouse - if there are two different dice values present with\nthree of the dice being for one value and the other two for another value then 25 points can be\nadded to the score\n\n');
 fprintf('Yahtzee - if all five dice are of the same value then 50 points\ncan be added to the score\n\n');
 fprintf('Chance - the total value for all the dice rolled is added to the score\n\n');
-fprintf('If more guidiance is required please refer to\nhttps://u.osu.edu/fe1181au18sec23590c/software-documentation/user-manual/ for help\n\n');
+fprintf('If more guidiance is required please press "Ctrl" + "C" and refer to the <a href="https://u.osu.edu/fe1181au18sec23590c/software-documentation/user-manual/">User Manual</a> for help.');
 fprintf('Press any key to continue\n');
 pause()
 clc
