@@ -1,3 +1,4 @@
+
 clear;
 clc;
 warning('off');
@@ -39,14 +40,14 @@ for x = 1:1:13
         
         % Loops until avaliable category has been selected
         while 1
-            category=input('What category do you want these points to count for?\n');
+            category=input('What category do you want these points to count for (type in category number you want to use)?\n');
             
             % Checks to make sure that the category has not been used
-            if isinhand(categoriesused, category) == false
+            if isinhand(categoriesused, category) == false && category < 14 && category >0
                 categoriesused(p,category) = category;
                 break;
             else
-                fprintf('You have already used this category!\n');
+                fprintf('You have already used this category! (type in a different number)\n');
             end
         end
         
