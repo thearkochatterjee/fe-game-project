@@ -4,6 +4,26 @@ clc;
 warning('off');
 % Game based on rolling 5 dice and trying to achieve the highest score
 
+% Breif Discription over how the categories will be scored
+fprintf('Scoring category overview:\n\n');
+fprintf('Aces - Adds the total for all the ones rolled\n\n');
+fprintf('Twos - Add the total for all the twos rolled\n\n');
+fprintf('Threes - Adds the total for all the threes rolled\n\n');
+fprintf('Fours - Adds the total for all the fours rolled\n\n');
+fprintf('Fives - Adds the total for all the fives rolled\n\n');
+fprintf('Sixes - Addes the total for all the sixes rolled\n\n');
+fprintf('Three of a kind - if three of the same dice value are rolled then\nall the dice present will be totalled and added to the score\n\n');
+fprintf('Four of a kind - if four of the same dice value are rolled then all\nthe dice present will be totalled and added to the score\n\n');
+fprintf('Small Straight - if four of the five dice are consecutive then 30\npoints will be added to the score\n\n');
+fprintf('Large Straight - if all five dice are consecutive then 40 points will\nbe added to the score\n\n');
+fprintf('Fullhouse - if there are two different dice values present with\nthree of the dice being for one value and the other two for another value then 25 points can be\nadded to the score\n\n');
+fprintf('Yahtzee - if all five dice are of the same value then 50 points\ncan be added to the score\n\n');
+fprintf('Chance - the total value for all the dice rolled is added to the score\n\n');
+fprintf('If more guidiance is required please refer to\nhttps://u.osu.edu/fe1181au18sec23590c/software-documentation/user-manual/ for help\n\n');
+fprintf('Press any key to continue\n');
+pause()
+clc
+
 % Asks how many players are playing
 numplayers = input('How many players are present?');
 
@@ -31,10 +51,10 @@ for x = 1:1:13
         fprintf('6 - Sixes\n');
         fprintf('7 - Three of a kind\n');
         fprintf('8 - Four of a kind\n');
-        fprintf('9 - Small Straight\n');
-        fprintf('10 - Large Straight\n');
-        fprintf('11 - Fullhouse\n');
-        fprintf('12 - Yahtzee\n');
+        fprintf('9 - Small Straight (30 points)\n');
+        fprintf('10 - Large Straight (40 points)\n');
+        fprintf('11 - Fullhouse (25 points)\n');
+        fprintf('12 - Yahtzee (50 points)\n');
         fprintf('13 - Chance\n');
         fprintf('Your score so far is %.0f\n',score(p));
         
